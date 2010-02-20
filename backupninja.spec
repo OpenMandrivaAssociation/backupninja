@@ -3,14 +3,12 @@
 
 Summary:	Lightweight, extensible meta-backup system
 Name:		backupninja
-Version:	0.9.6
-Release:	%mkrel 3
+Version:	0.9.7
+Release:	%mkrel 1
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		http://dev.riseup.net/backupninja/
 Source0:	http://dev.riseup.net/backupninja/download/%{name}-%{version}.tar.gz
-Patch0:		backupninja_0.9.6-4.diff
-Patch1:		backupninja-0.9.6-mandriva_fixes.diff
 Requires(post): rpm-helper
 Requires:	cdrdao
 Requires:	cdrkit
@@ -41,23 +39,18 @@ Backupninja currently supports common backup utilities, easing their
 configuration, currently supported are: rdiff-backup, duplicity, CD/DVD
 
 %prep
-
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 autoreconf -fis
 %configure2_5x \
     --libdir=%{_prefix}/lib \
     --localstatedir=/var
-make
+%make
 
 %install
 rm -rf %{buildroot}
-
 %makeinstall libdir=%{buildroot}%{_prefix}/lib
-
 install -d %{buildroot}%{_sysconfdir}/backup.d
 install -d %{buildroot}/var/backups
 install -d %{buildroot}/var/log
