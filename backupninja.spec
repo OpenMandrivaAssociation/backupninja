@@ -3,7 +3,7 @@
 
 Summary:	Lightweight, extensible meta-backup system
 Name:		backupninja
-Version:	0.9.7
+Version:	0.9.8
 Release:	%mkrel 1
 License:	GPLv2
 Group:		Archiving/Backup
