@@ -3,12 +3,12 @@
 
 Summary:	Lightweight, extensible meta-backup system
 Name:		backupninja
-Version:	0.9.8
+Version:	0.9.9
 Release:	%mkrel 1
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		http://dev.riseup.net/backupninja/
-Source0:	http://dev.riseup.net/backupninja/download/%{name}-%{version}.tar.gz
+Source0:	http://dev.riseup.net/backupninja/download/%{name}-%{version}.tar.bz2
 Requires(post): rpm-helper
 Requires:	cdrdao
 Requires:	cdrkit
