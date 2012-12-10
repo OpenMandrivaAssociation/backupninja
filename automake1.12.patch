@@ -1,0 +1,14 @@
+diff --git a/lib/Makefile.am b/lib/Makefile.am
+index 11eba37..5ea3bbf 100644
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -1,6 +1,7 @@
+-pkglib_SCRIPTS = easydialog parseini tools vserver
++#pkglib_SCRIPTS = easydialog parseini tools vserver
++scriptsdir = easydialog parseini tools vserver
+ 
+-CLEANFILES = $(pkglib_SCRIPTS)
++CLEANFILES = $(scriptsdir)
+ 
+ EXTRA_DIST = easydialog.in parseini.in tools.in vserver.in
+ 
