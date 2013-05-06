@@ -1,14 +1,11 @@
-%define _enable_debug_packages %{nil}
-%define debug_package          %{nil}
-
 Summary:	Lightweight, extensible meta-backup system
 Name:		backupninja
-Version:	0.9.10
-Release:	%mkrel 1
+Version:	1.0.1
+Release:	%mkrel 2
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		http://dev.riseup.net/backupninja/
-Source0:	https://labs.riseup.net/code/projects/backupninja/files/242/%{name}-%{version}.tar.gz
+Source0:	https://labs.riseup.net/code/attachments/download/275/%{name}-%{version}.tar.gz
 Requires(post): rpm-helper
 Requires:	cdrdao
 Requires:	cdrkit
@@ -22,7 +19,6 @@ Requires:	python-pylibacl
 Requires:	python-xattr
 Requires:	rdiff-backup
 BuildArch:	noarch
-Patch0:		automake1.12.patch
 
 %description
 Backupninja lets you drop simple config files in /etc/backup.d to coordinate
@@ -40,18 +36,16 @@ configuration, currently supported are: rdiff-backup, duplicity, CD/DVD
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-#autoreconf -fi
-./autogen.sh
+autoreconf -fis
 %configure2_5x \
     --libdir=%{_prefix}/lib \
     --localstatedir=/var
 %make
 
 %install
-%makeinstall_std
+%makeinstall libdir=%{buildroot}%{_prefix}/lib
 install -d %{buildroot}%{_sysconfdir}/backup.d
 install -d %{buildroot}/var/backups
 install -d %{buildroot}/var/log
@@ -69,6 +63,7 @@ touch %{buildroot}/var/log/backupninja.log
 %attr(0750,root,root) %dir %{_sysconfdir}/backup.d
 %{_sbindir}/*
 %{_datadir}/backupninja
+%{_prefix}/lib/backupninja
 %attr(0750,root,root) %dir /var/backups
 %attr(0750,root,root) %dir /var/lib/backupninja
 %attr(0750,root,root) %dir /var/lib/backupninja/reports
