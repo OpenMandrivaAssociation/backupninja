@@ -1,7 +1,7 @@
 Summary:	Lightweight, extensible meta-backup system
 Name:		backupninja
 Version:	1.0.1
-Release:	%mkrel 2
+Release:	3
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		http://dev.riseup.net/backupninja/
