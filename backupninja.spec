@@ -1,11 +1,11 @@
 Summary:	Lightweight, extensible meta-backup system
 Name:		backupninja
-Version:	1.0.1
-Release:	3
+Version:	1.1.0
+Release:	1
 License:	GPLv2
 Group:		Archiving/Backup
-URL:		http://dev.riseup.net/backupninja/
-Source0:	https://labs.riseup.net/code/attachments/download/275/%{name}-%{version}.tar.gz
+URL:		https://0xacab.org/liberate/backupninja/
+Source0:	https://0xacab.org/liberate/backupninja/-/archive/backupninja-1.1.0/backupninja-backupninja-1.1.0.tar.bz2
 Requires(post): rpm-helper
 Requires:	cdrdao
 Requires:	cdrkit
@@ -17,7 +17,7 @@ Requires:	mailx
 Requires:	mdadm
 Requires:	python-pylibacl
 Requires:	python-xattr
-Requires:	rdiff-backup
+Recommends:	rdiff-backup
 BuildArch:	noarch
 
 %description
@@ -35,17 +35,18 @@ Backupninja currently supports common backup utilities, easing their
 configuration, currently supported are: rdiff-backup, duplicity, CD/DVD
 
 %prep
-%setup -q
+%setup -qn %{name}-%{name}-%{version}
 
 %build
 autoreconf -fis
-%configure2_5x \
+%configure \
     --libdir=%{_prefix}/lib \
     --localstatedir=/var
-%make
+%make_build
 
 %install
-%makeinstall libdir=%{buildroot}%{_prefix}/lib
+%make_install libdir=%{_prefix}/lib
+
 install -d %{buildroot}%{_sysconfdir}/backup.d
 install -d %{buildroot}/var/backups
 install -d %{buildroot}/var/log
@@ -56,7 +57,7 @@ touch %{buildroot}/var/log/backupninja.log
 %create_ghostfile /var/log/backupninja.log root root 644
 
 %files
-%doc AUTHORS COPYING ChangeLog NEWS README TODO
+%doc AUTHORS COPYING ChangeLog NEWS README.md TODO
 %config %{_sysconfdir}/cron.d/backupninja
 %config %{_sysconfdir}/logrotate.d/backupninja
 %config(noreplace) %{_sysconfdir}/backupninja.conf
