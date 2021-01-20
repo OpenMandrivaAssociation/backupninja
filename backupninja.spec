@@ -17,7 +17,7 @@ Requires:	mailx
 Requires:	mdadm
 Requires:	python-pylibacl
 Requires:	python-xattr
-Requires:	rdiff-backup
+Recommends:	rdiff-backup
 BuildArch:	noarch
 
 %description
