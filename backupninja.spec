@@ -56,14 +56,14 @@ touch %{buildroot}/var/log/backupninja.log
 %create_ghostfile /var/log/backupninja.log root root 644
 
 %files
-%doc AUTHORS COPYING ChangeLog NEWS README TODO
+%doc AUTHORS COPYING ChangeLog NEWS TODO
 %config %{_sysconfdir}/cron.d/backupninja
 %config %{_sysconfdir}/logrotate.d/backupninja
 %config(noreplace) %{_sysconfdir}/backupninja.conf
 %attr(0750,root,root) %dir %{_sysconfdir}/backup.d
 %{_sbindir}/*
 %{_datadir}/backupninja
-%{_prefix}/lib/backupninja
+#{_prefix}/lib/backupninja
 %attr(0750,root,root) %dir /var/backups
 %attr(0750,root,root) %dir /var/lib/backupninja
 %attr(0750,root,root) %dir /var/lib/backupninja/reports
