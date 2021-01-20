@@ -45,7 +45,8 @@ autoreconf -fis
 %make_build
 
 %install
-%make_install libdir=%{buildroot}%{_prefix}/lib
+%make_install libdir=%{_prefix}/lib
+
 install -d %{buildroot}%{_sysconfdir}/backup.d
 install -d %{buildroot}/var/backups
 install -d %{buildroot}/var/log
@@ -56,14 +57,14 @@ touch %{buildroot}/var/log/backupninja.log
 %create_ghostfile /var/log/backupninja.log root root 644
 
 %files
-%doc AUTHORS COPYING ChangeLog NEWS TODO
+%doc AUTHORS COPYING ChangeLog NEWS README.md TODO
 %config %{_sysconfdir}/cron.d/backupninja
 %config %{_sysconfdir}/logrotate.d/backupninja
 %config(noreplace) %{_sysconfdir}/backupninja.conf
 %attr(0750,root,root) %dir %{_sysconfdir}/backup.d
 %{_sbindir}/*
 %{_datadir}/backupninja
-#{_prefix}/lib/backupninja
+%{_prefix}/lib/backupninja
 %attr(0750,root,root) %dir /var/backups
 %attr(0750,root,root) %dir /var/lib/backupninja
 %attr(0750,root,root) %dir /var/lib/backupninja/reports
