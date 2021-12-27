@@ -1,11 +1,11 @@
 Summary:	Lightweight, extensible meta-backup system
 Name:		backupninja
-Version:	1.1.0
+Version:	1.2.1
 Release:	1
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		https://0xacab.org/liberate/backupninja/
-Source0:	https://0xacab.org/liberate/backupninja/-/archive/backupninja-1.1.0/backupninja-backupninja-1.1.0.tar.bz2
+Source0:	https://0xacab.org/liberate/backupninja/-/archive/backupninja-%{version}/backupninja-backupninja-%{version}.tar.bz2
 Requires(post): rpm-helper
 Requires:	cdrdao
 Requires:	cdrkit
