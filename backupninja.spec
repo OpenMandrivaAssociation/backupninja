@@ -20,6 +20,11 @@ Requires:	python-xattr
 Recommends:	rdiff-backup
 BuildArch:	noarch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 %description
 Backupninja lets you drop simple config files in /etc/backup.d to coordinate
 system backups. Backupninja is a master of many arts, including incremental
